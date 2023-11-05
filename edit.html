@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple Text Editor</title>
+</head>
+<body>
+	<form action="submit.php" method="post">
+		<select name="filename">
+			<option value="file1.txt">File 1</option>
+			<option value="file2.txt">File 2</option>
+		</select>
+		<input type="submit" value="Load">
+        <br><br>
+		<textarea name="editor" rows="10" cols="50"><?php
+			$filename = isset($_GET['file']) ? $_GET['file'] : '';
+			if ($filename) {
+				readfile($filename);
+			}
+			?></textarea>
+		<br>
+		<input type="submit" value="Save">
+	</form>
+</body>
+</html>
